@@ -32,7 +32,7 @@ public class dataConfig {
 	@Autowired
 	Environment environment;
 
-	@Bean
+	@Bean  //this way we included the bean in application context and is now used as a spring bean
 	LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean lfb = new LocalContainerEntityManagerFactoryBean();
 		lfb.setDataSource(dataSource());
@@ -41,7 +41,7 @@ public class dataConfig {
 		lfb.setJpaProperties(hibernateProps());
 		return lfb;
 	}
-
+//Spring aop is limited when is comes to constructors and private methods
 	@Bean
 	DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
