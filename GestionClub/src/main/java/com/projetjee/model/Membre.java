@@ -8,9 +8,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @Table(name="Membre")
 public class Membre {
+	
   
 	@javax.persistence.Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
