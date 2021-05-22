@@ -2,16 +2,19 @@ package com.EnicarthageClubs.model;
 
 import java.util.List;
 
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Event")
+@Table(name="event")
 
 public class Event {
 
@@ -32,17 +35,19 @@ public class Event {
 	
 	
 	
-	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
-	 private List<Club> clubs;
+	
+	@ManyToMany(targetEntity = Club.class, mappedBy = "events", cascade = CascadeType.ALL)
+	private List<Club> clubs;
 
 
 
-	public Event(String date, String name, float budjet, List<Club> clubs) {
+
+	public Event(String date, String name, float budjet) {
 		super();
 		this.date = date;
 		this.name = name;
 		this.budjet = budjet;
-		this.clubs = clubs;
+		
 	}
 
 
@@ -101,15 +106,10 @@ public class Event {
 
 
 
-	public List<Club> getClubs() {
-		return clubs;
-	}
 
 
 
-	public void setClubs(List<Club> clubs) {
-		this.clubs = clubs;
-	}
+
 	
 	
 }

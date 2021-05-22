@@ -1,22 +1,31 @@
 package com.EnicarthageClubs.model;
 
+
+
+import java.util.List;
+
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="Membre")
+@Table(name="membre")
 public class Membre {
 	
   
 	@javax.persistence.Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID", nullable=false, unique=true, length=11)
+	@Column(name="Id", nullable=false, unique=true, length=11)
 	public int Id;
 	
 	@Column(name="Name",nullable=false, unique=false, length=20)
@@ -34,16 +43,16 @@ public class Membre {
 	@Column(name="Email", nullable=false, length=25)
 	public String Email;
 	
-	@ManyToOne
-    @JoinColumn(name = "club_id")
-    private Club club;
+	
+	@ManyToMany(targetEntity = Club.class, mappedBy = "membres", cascade = CascadeType.ALL)
+	private List<Club> clubs;
 
-	public Club getClub() {
-		return club;
+	public List<Club> getClub() {
+		return clubs;
 	}
 
-	public void setClub(Club club) {
-		this.club = club;
+	public void setClub(List<Club> club) {
+		this.clubs = club;
 	}
 
 	public int getId() {
