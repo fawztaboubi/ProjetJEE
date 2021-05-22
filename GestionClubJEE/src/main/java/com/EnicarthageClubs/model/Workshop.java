@@ -8,11 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Workshop")
+@Table(name="workshop")
 public class Workshop{
 	
 	@javax.persistence.Id
@@ -32,8 +33,8 @@ public class Workshop{
 	@Column(name="InstructorContact",nullable=false, unique=true, length=20)
 	public String contact;
 	
-	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
-	 private List<Club> clubs;
+	@ManyToMany(targetEntity = Club.class, mappedBy = "workshops", cascade = CascadeType.ALL)
+	private List<Club> clubs;
 
 	public Workshop(String date, String subject, String instructor, String contact, List<Club> clubs) {
 	

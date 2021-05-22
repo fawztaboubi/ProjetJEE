@@ -1,5 +1,7 @@
 package com.EnicarthageClubs.model;
 
+
+
 import java.util.List;
 
 
@@ -9,12 +11,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="Club")
+@Table(name="club")
 public class Club {
 	
 	@javax.persistence.Id
@@ -30,20 +35,60 @@ public class Club {
 	@Column(name="Domaine",nullable=false, unique=true, length=20)
 	public String Domaine;
 	
-	 @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
-	 private List<Membre> membres;
+
 	 
 	 
 	 @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
 	 private List<Meeting> meetings;
 	 
-	 @ManyToOne
-	    @JoinColumn(name = "event_id")
-	    private Event event;
-	 @ManyToOne
-	    @JoinColumn(name = "workshop_id")
-	    private Workshop workshop;
+	 //One club can have many members and every member can more than one club--> manytomany with a joiningtable
+	 @ManyToMany(targetEntity = Membre.class, cascade = CascadeType.ALL)
 	 
+	 @JoinTable(
+	 
+	         name="participants",
+	 
+	         joinColumns=
+	 
+	         @JoinColumn( name="club_id", referencedColumnName="Id"),
+	 
+	         inverseJoinColumns=@JoinColumn(name="member_id", referencedColumnName="Id"))
+	 
+	 private List<Membre> membres;
+	 
+	
+	 
+	//A club can host from none to many events and an event is organized by 1 or more club
+     @ManyToMany(targetEntity = Event.class, cascade = CascadeType.ALL)
+	 
+	 @JoinTable(
+	 
+	         name="events",
+	 
+	         joinColumns=
+	 
+	         @JoinColumn( name="club_id", referencedColumnName="Id"),
+	 
+	         inverseJoinColumns=@JoinColumn(name="event_id", referencedColumnName="Id"))
+	 
+	 private List<Event> events;
+	 
+     //Club-Workshop is an [n,n] relationship-->regle3 donc manytomany
+     @ManyToMany(targetEntity = Workshop.class, cascade = CascadeType.ALL)
+	 
+	 @JoinTable(
+	 
+	         name="workshops",
+	 
+	         joinColumns=
+	 
+	         @JoinColumn( name="club_id", referencedColumnName="Id"),
+	 
+	         inverseJoinColumns=@JoinColumn(name="workshop_id", referencedColumnName="Id"))
+	 
+	 private List<Workshop> workshops;
+	
+	  
 	public List<Membre> getMembres() {
 		return membres;
 	}
