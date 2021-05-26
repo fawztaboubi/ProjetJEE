@@ -5,6 +5,7 @@ package com.EnicarthageClubs.model;
 import java.util.List;
 
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,8 +26,7 @@ public class Club {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="Id", nullable=false, unique=true, length=11)
 	public Long Id;
-	//ALTER TABLE club MODIFY
-	//COLUMN Id INT auto_increment ;
+	
 	
 	@Column(name="Name",nullable=false, unique=true, length=20)
 	public String Name;
@@ -37,8 +36,8 @@ public class Club {
 	
 
 	 
-	 
-	 @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
+	 //, orphanRemoval = true
+	 @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
 	 private List<Meeting> meetings;
 	 
 	 //One club can have many members and every member can more than one club--> manytomany with a joiningtable

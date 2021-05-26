@@ -24,7 +24,7 @@ public class Event {
 	@Column(name="Id", nullable=false, unique=true, length=11)
 	public Long Id;
 	
-	@Column(name="Date",nullable=false, unique=true, length=20)
+	@Column(name="Date",nullable=false, unique=true, length=30)
 	public String date;
 	
 	@Column(name="Name",nullable=false, unique=true, length=20)

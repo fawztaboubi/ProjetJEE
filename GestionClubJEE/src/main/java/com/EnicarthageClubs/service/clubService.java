@@ -3,6 +3,8 @@ package com.EnicarthageClubs.service;
 import java.util.List;
 
 
+
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,21 +13,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.EnicarthageClubs.model.Club;
 import com.EnicarthageClubs.repository.clubRepo;
+
 @Service
 public class clubService {
 	
 	@Autowired
-	clubRepo<Club> clubRepository;
+	clubRepo clubRepository;
     
 	@Transactional
 	public List<Club> getAllClubs() {
-		return (List<Club>) clubRepository.findAll();
+		return clubRepository.findAll();
 	}
 
-	@Transactional
-	public List<Club> findByName(String name) {
-		return clubRepository.findByName(name);
-	}
+	//@Transactional
+	//public List<Club> findByName(String name) {
+		//return clubRepository.findByName(name);
+	//}
 
 	@Transactional
 	public Optional<Club> getById(Long id) {

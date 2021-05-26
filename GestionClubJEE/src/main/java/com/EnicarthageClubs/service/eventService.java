@@ -2,6 +2,7 @@ package com.EnicarthageClubs.service;
 
 import java.util.List;
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import com.EnicarthageClubs.repository.eventRepo;
 public class eventService {
 	
 	@Autowired
-	eventRepo<Event>EventRepository;
+	eventRepo EventRepository;
 
 	@Transactional
 	public List<Event> getAllEvents() {

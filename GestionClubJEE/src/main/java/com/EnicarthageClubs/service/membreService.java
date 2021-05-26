@@ -14,17 +14,17 @@ import com.EnicarthageClubs.repository.membreRepo;
 public class membreService {
 
 	@Autowired
-	membreRepo<Membre> membreRepository;
+	membreRepo membreRepository;
 
 	@Transactional
 	public List<Membre> getAllMembres() {
 		return (List<Membre>) membreRepository.findAll();
 	}
 
-	@Transactional
-	public List<Membre> findByName(String name) {
-		return membreRepository.findByName(name);
-	}
+	//@Transactional
+	//public List<Membre> findByName(String name) {
+		//return membreRepository.findByName(name);
+	//}
 
 	@Transactional
 	public Optional<Membre> getById(Long id) {

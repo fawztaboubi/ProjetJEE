@@ -1,5 +1,6 @@
 package com.EnicarthageClubs.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,21 +24,22 @@ public class Meeting {
 	@Column(name="Moderator",nullable=false, unique=true, length=20)
 	public String moderator;
 	
+	//salle des clubs, local press, local enactus principal....
 	@Column(name="Office",nullable=false, unique=true, length=20)
 	public String Office;
 	
-	
-	@ManyToOne
+	//can't update club unless we add cascade 
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "club_id")
     private Club club;
 
 
-	public Meeting(String topic, String moderator, String office, Club club) {
+	public Meeting(String topic, String moderator, String office) {
 		
 		this.topic = topic;
 		this.moderator = moderator;
-		Office = office;
-		this.club = club;
+		this.Office = office;
+		
 	}
 
 
