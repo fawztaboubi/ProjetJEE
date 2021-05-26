@@ -9,11 +9,12 @@ import org.springframework.stereotype.Repository;
 import com.EnicarthageClubs.model.Event;
 
 @Repository
-public interface eventRepo<P> extends JpaRepository<Event, Long> {
+public interface eventRepo extends JpaRepository<Event, Long> {
 
 
 
 	List<Event> findByName(String name);
+	List<Event> findByNameandBudjet(String Name,String Budjet);
 
 
 

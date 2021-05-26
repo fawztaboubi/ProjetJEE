@@ -29,10 +29,10 @@ public class membreController {
 		return MembreService.getById(id);
 	}
 
-	@RequestMapping(value = "/membreByName/{name}", method = RequestMethod.GET)
-	public List<Membre> getMembreByName(@PathVariable String name) {
-		return MembreService.findByName(name);
-	}
+	//@RequestMapping(value = "/membreByName/{name}", method = RequestMethod.GET)
+	//public List<Membre> getMembreByName(@PathVariable String name) {
+		//return MembreService.findByName(name);
+	//}
 
 	@RequestMapping(value = "/membre", method = RequestMethod.GET)
 	public List<Membre> getAll() {
