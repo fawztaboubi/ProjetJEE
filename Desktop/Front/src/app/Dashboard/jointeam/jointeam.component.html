@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body *ngIf="requests!==[]">
+    <h2 class="bigtitle">Requests On Hold</h2>
+    <br>
+    <div class="row">
+        <div class="column" *ngFor="let request of requests">
+            <div class="card">
+
+                <div class="container">
+                       <header>
+                        <h2 class="name">{{request.Name}} {{request.FamilyName}}<i class="fa fa-times"
+                            aria-hidden="true" (click)="refuseRequest(request)"></i>
+                        </h2>
+                        </header>
+                    <p class="title">{{request.Job}}</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>{{request.Email}}</p>
+                    <p><button class="button" (click)="openDialog(request)">Approve</button></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<ng-template #elseBlock>
+    <div></div>
+</ng-template>

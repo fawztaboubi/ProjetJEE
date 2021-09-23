@@ -1,0 +1,177 @@
+<head hidden>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Data Table with Filter Row Feature</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".btn-group .btn").click(function () {
+                var inputValue = $(this).find("input").val();
+                if (inputValue != 'all') {
+                    var target = $('table tr[data-status="' + inputValue + '"]');
+                    $("table tbody tr").not(target).hide();
+                    target.fadeIn();
+                } else {
+                    $("table tbody tr").fadeIn();
+                }
+            });
+
+            // Changing the class of status label to support Bootstrap 4
+            var bs = $.fn.tooltip.Constructor.VERSION;
+            var str = bs.split(".");
+            if (str[0] == 4) {
+                $(".label").each(function () {
+                    var classStr = $(this).attr("class");
+                    var newClassStr = classStr.replace(/label/g, "badge");
+                    $(this).removeAttr("class").addClass(newClassStr);
+                });
+            }
+
+        });
+    </script>
+</head>
+
+<router-outlet></router-outlet>
+<br>
+<body>
+    
+    <div class="btn-group" data-toggle="buttons">
+        <div><label class="title">Themes</label></div>
+
+        <label class=" btn btn-primary themes" *ngFor="let theme of data.themes!">
+            <input type="radio" (click)="routeToTheme(theme!)">
+            {{theme!.name}}
+        </label>
+        <label class=" btn btn-primary themes" (click)="openDialog()">
+            <i class="fa fa-plus" style="font-size: 15px;"></i>
+            New Theme
+        </label>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="btn-group" data-toggle="buttons">
+        <div><label>Filters<i class="fa fa-filter" aria-hidden="true"></i></label></div>
+        <td><input class="form-control" type="text" name="project" [(ngModel)]="project" placeholder="Project"
+            (ngModelChange)="Search()"></td>
+        <td><input class="form-control" type="text" name="status" placeholder="Status" [(ngModel)]="status"(ngModelChange)="Search()"></td>
+        <td><input class="form-control" type="text" name="project" placeholder="Line" [(ngModel)]="line"(ngModelChange)="Search()"></td>
+        <td><input class="form-control" type="text" name="project" placeholder="Owner" [(ngModel)]="owner"(ngModelChange)="Search()"></td>
+        <td><input class="form-control" type="text" name="family" placeholder="Family" [(ngModel)]="family"(ngModelChange)="Search()"></td>
+        <td><input class="form-control" type="date" name="start" placeholder="Start Date" [(ngModel)]="start"(ngModelChange)="Search()"></td>
+        <td><input class="form-control" type="date" name="end" placeholder="Due Date" [(ngModel)]="end" (ngModelChange)="Search()">
+        </td>
+    </div>
+ 
+    <br>
+
+
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr >
+
+                <th>Project</th>
+                <th>Progress</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Defect Description</th>
+                <th>Family</th>
+                <th >Line</th>
+                <th>Root Cause</th>
+                <th>Manalysis</th>
+                <th>Responsabilty</th>
+                <th>Owner</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
+                <th>Second Due Date</th>
+                <th>Third Due Date</th>
+                <th>Wk0</th>
+                <th>Wk1</th>
+                <th>Wk2</th>
+                <th>Wk3</th>
+                <th>Wk4</th>
+                <th>Wk5</th>
+                <th>Wk6</th>
+                <th>Wk7</th>
+                <th>Wk8</th>
+                <th>Wk9</th>
+                <th>Wk10</th>
+                <th>Wk11</th>
+                <th>Wk12</th>
+                <th>Wk13</th>
+                <th>Wk14</th>
+                <th>Wk15</th>
+                <th>Wk16</th>
+                <th>Wk17</th>
+                <th>Wk18</th>
+                <th>Wk19</th>
+                <th>Wk20</th>
+                <th>Wk21</th>
+                <th>Wk22</th>
+                <th>Wk23</th>
+                <th>Wk24</th>
+                <th>Wk25</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let action of all_actions " data-status=action.Status>
+                <td>{{action.Project}}</td>
+                <td>{{action.Progress}}</td>
+                <td>{{action.ActionDescription}}</td>
+                <td><span [ngClass]="{
+                    'label label-success': action.Status === 'done',
+                    'label label-danger': action.Status === 'delayed',
+                    'label label-warning': action.Status === 'doing'}">{{action.Status}}</span></td>
+                <td>{{action.DefectDescription}}</td>
+                <td>{{action.Family}}</td>
+                <td>{{action.Line}}</td>
+                <td>{{action.RootCause}}</td>
+                <td>{{action.Manalysis}}</td>
+                <td>{{action.Responsability}}</td>
+                <td>{{action.user?.name}}</td>
+                <td>{{action.StartDate}}</td>
+                <td>{{action.DueDate}}</td>
+                <td>{{action.SecondDueDate}}</td>
+                <td>{{action.ThirdDueDate}}</td>
+                <td>{{action.Wk0}}</td>
+                <td>{{action.Wk1}}</td>
+                <td>{{action.Wk2}}</td>
+                <td>{{action.Wk3}}</td>
+                <td>{{action.Wk4}}</td>
+                <td>{{action.Wk5}}</td>
+                <td>{{action.Wk6}}</td>
+                <td>{{action.Wk7}}</td>
+                <td>{{action.Wk8}}</td>
+                <td>{{action.Wk9}}</td>
+                <td>{{action.Wk10}}</td>
+                <td>{{action.Wk11}}</td>
+                <td>{{action.Wk12}}</td>
+                <td>{{action.Wk13}}</td>
+                <td>{{action.Wk14}}</td>
+                <td>{{action.Wk15}}</td>
+                <td>{{action.Wk16}}</td>
+                <td>{{action.Wk17}}</td>
+                <td>{{action.Wk18}}</td>
+                <td>{{action.Wk19}}</td>
+                <td>{{action.Wk20}}</td>
+                <td>{{action.Wk21}}</td>
+                <td>{{action.Wk22}}</td>
+                <td>{{action.Wk23}}</td>
+                <td>{{action.Wk24}}</td>
+                <td>{{action.Wk25}}</td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+</body>

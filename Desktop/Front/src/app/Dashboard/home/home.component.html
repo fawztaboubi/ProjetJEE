@@ -1,0 +1,64 @@
+<body id="body"> 
+
+    <div id="sidebar">
+
+        <div class="sidebar__menu" >
+
+          <h2 routerLink="dashboard">
+            <i class="fa fa-home" ></i>
+            Dashboard
+          </h2> 
+
+          <div class="sidebar__link" style="border-radius:25px; border: 1px black outset; overflow: hidden" routerLink="profile">
+            <i class="fa fa-user" aria-hidden="true" ></i>
+            <a >Profile </a>
+           
+          </div>
+          <div class="sidebar__link" style="border-radius:25px; border: 1px black outset; overflow: hidden" routerLink="kpi">
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            <a >KPI Dashboard</a>
+          </div>
+
+
+          <h2>
+            <i class="fa fa-handshake-o"  ></i>
+            Manage Team
+          </h2>
+          <div class="sidebar__link" style="border-radius:25px; border: 1px black outset; overflow: hidden" routerLink="join">
+            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+            <a >Requests</a>
+          </div>
+
+          <div class="sidebar__link" style="border-radius:25px; border: 1px black outset; overflow: hidden" routerLink="team">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <a >My team</a>
+          </div>
+
+          <div class="sidebar__link" style="border-radius:25px; border: 1px black outset; overflow: hidden" >
+            <i class="fa fa-logout" aria-hidden="true"></i>
+             <a >Log Out</a>
+          </div>
+
+        </div>
+      
+    </div>
+    <div id="content"> 
+      <router-outlet></router-outlet>
+    </div>
+    
+   <script>
+     function toggleSidebar() {
+      if (!sidebarOpen) {
+        sidebar.classList.add("sidebar_responsive");
+        sidebarOpen = true;
+     }}
+
+     function closeSidebar() {
+      if (sidebarOpen) {
+       sidebar.classList.remove("sidebar_responsive");
+       sidebarOpen = false;
+     }}
+   </script> 
+        
+</body>
+

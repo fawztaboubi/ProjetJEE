@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h2 mat-dialog-title class="title">Add User <i class="fa fa-user-plus" aria-hidden="true"></i></h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="userForm">
+        <label class="field">Username</label>
+        <input type="text" id="username" class="form-control" formControlName="username" placeholder="username"
+            required>
+        <div *ngIf="userForm.get('username')!.invalid && (userForm.get('username')?.dirty || userForm.get('username')!.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="userForm.get('username')?.errors?.required">
+                Project is required.
+            </div>
+            <div *ngIf="userForm.get('username')?.errors?.minlength">
+                Project must be at least 4 characters long.
+            </div>
+        </div>
+        <br>
+        <label class="field">Password</label>
+        <input type="text" id="password" class="form-control" formControlName="password" placeholder="password"
+            required>
+        <div *ngIf="userForm.get('password')!.invalid && (userForm.get('password')?.dirty || userForm.get('password')!.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="userForm.get('password')?.errors?.required">
+                Project is required.
+            </div>
+            <div *ngIf="userForm.get('password')?.errors?.minlength">
+                Project must be at least 4 characters long.
+            </div>
+        </div>
+        <br>
+        <label class="sub-title">Grant user's privileges </label>
+        <span>
+            <div class=left>
+                <p class="ask">Add actions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="tick" type="checkbox" name="fruit"
+                    formControlName="addAction" ></p>
+                <p class="ask">Add action plans&nbsp;<input class="tick" type="checkbox" name="fruit"
+                    formControlName="addActionPlan"></p>
+                <p class="ask">Update action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="tick" type="checkbox" name="fruit"
+                    formControlName="modifyAction"></p>
+            </div>
+            <div>
+                <p class="ask">Update action plan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="tick" type="checkbox" name="fruit"
+                    formControlName="modifyActionPlan"></p>
+                <p class="ask">Import data to workspace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="tick" type="checkbox" name="fruit"
+                    formControlName="import"></p>
+                <p class="ask">Export data from dashboard&nbsp;<input class="tick" type="checkbox" name="fruit"
+                    formControlName="export"></p>
+            </div>
+        </span>
+        <footer>
+            <button mat-button mat-dialog-close class="add" type="submit" (click)="saveUser()">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+
+        </footer>
+    </form>
+</mat-dialog-content>

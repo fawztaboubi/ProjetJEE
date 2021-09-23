@@ -1,0 +1,422 @@
+<h2 mat-dialog-title class="title">Add Action <i class="fa fa-check" aria-hidden="true"></i></h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="actionForm">
+        <mat-horizontal-stepper linear>
+
+            <mat-step>
+                <!-- Project -->
+
+                <label>Project</label>
+                <input type="text" id="name" class="form-control" formControlName="project" placeholder="project"
+                    required>
+                <div *ngIf="actionForm.get('project')!.invalid && (actionForm.get('project')?.dirty || actionForm.get('project')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('project')?.errors?.required">
+                        Project is required.
+                    </div>
+                    <div *ngIf="actionForm.get('project')?.errors?.minlength">
+                        Project must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Family -->
+                <label>Family</label>
+                <input type="text" id="name" class="form-control" formControlName="family" placeholder="family"
+                    required>
+                <div *ngIf="actionForm.get('family')!.invalid && (actionForm.get('family')?.dirty || actionForm.get('family')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('family')?.errors?.required">
+                        Family is required.
+                    </div>
+                    <div *ngIf="actionForm.get('family')?.errors?.minlength">
+                        Family must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Line -->
+                <label>Line</label>
+                <input type="text" id="name" class="form-control" formControlName="line" placeholder="line" required>
+                <div *ngIf="actionForm.get('line')!.invalid && (actionForm.get('line')?.dirty || actionForm.get('line')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('line')!.errors?.required">
+                        Line is required.
+                    </div>
+                    <div *ngIf="actionForm.get('line')!.errors?.minlength">
+                        Line must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Owner -->
+                <label>Owner</label>
+                <input type="text" id="name" class="form-control" placeholder="owner" [(ngModel)]="username"
+                    [ngModelOptions]="{standalone: true}" required>
+                <select name="usernames" id="usernames" [(ngModel)]="owner" [ngModelOptions]="{standalone: true}"
+                        *ngFor="let username of usernames">
+                    <option value="{{username}}">{{username}}</option>
+                </select>    
+                    <br>
+                <footer>
+                        <button matStepperNext class="next" type="submit">Next <i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></button>
+                        <p class="ask">Notify the owner of the new the action?<input class="tick" type="checkbox"
+                                name="fruit" value="yes"></p>
+                </footer>
+
+            </mat-step>
+
+
+            <mat-step>
+                <!-- StartDate -->
+                <label>StartDate</label>
+                <input type="date" id="name" class="form-control" formControlName="startDate" required>
+                <div *ngIf="actionForm.get('startDate')!.invalid && (actionForm.get('startDate')?.dirty || actionForm.get('startDate')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('startDate')!.errors?.required">
+                        StartDate is required.
+                    </div>
+                    <div *ngIf="actionForm.get('startDate')!.errors?.minlength">
+                        StartDate must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- DueDate -->
+                <label>Due Date</label>
+                <input type="date" id="name" class="form-control" formControlName="DueDate" required>
+                <div *ngIf="actionForm.get('DueDate')!.invalid && (actionForm.get('sDueDate')?.dirty || actionForm.get('DueDate')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('DueDate')!.errors?.required">
+                        DueDate is required.
+                    </div>
+                    <div *ngIf="actionForm.get('DueDate')!.errors?.minlength">
+                        DueDate must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Responability -->
+                <label>Responsability</label>
+                <input type="text" id="name" class="form-control" formControlName="responsability"
+                    placeholder="responsability" required>
+                <div *ngIf="actionForm.get('responsability')!.invalid && (actionForm.get('responsability')?.dirty || actionForm.get('responsability')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('responsability')!.errors?.required">
+                        Responability is required.
+                    </div>
+                    <div *ngIf="actionForm.get('responsability')!.errors?.minlength">
+                        Responability must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+                <!-- Comment -->
+                <label>Comment</label>
+                <input type="text" id="name" class="form-control" formControlName="comment" placeholder="comment"
+                    required>
+                <div *ngIf="actionForm.get('comment')!.invalid && (actionForm.get('comment')?.dirty || actionForm.get('comment')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('comment')!.errors?.required">
+                        Comment is required.
+                    </div>
+                    <div *ngIf="actionForm.get('comment')!.errors?.minlength">
+                        Comment must be at least 4 characters long.
+                    </div>
+                </div>
+
+                <br>
+                <button matStepperNext class="next" type="submit">Next <i class="fa fa-arrow-right"
+                        aria-hidden="true"></i></button>
+                <button matStepperPrevious class="back" type="submit"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i> Back </button>
+
+
+            </mat-step>
+
+            <mat-step>
+                <!-- SecondDueDate -->
+                <label>Second Due Date</label>
+                <input type="date" id="name" class="form-control" formControlName="secondDueDate" required>
+                <div *ngIf="actionForm.get('secondDueDate')!.invalid && (actionForm.get('secondDueDate')?.dirty || actionForm.get('secondDueDate')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('secondDueDate')!.errors?.required">
+                        SecondDueDate is required.
+                    </div>
+                    <div *ngIf="actionForm.get('secondDueDate')!.errors?.minlength">
+                        SecondDueDate must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- ThirdDueDate -->
+                <label>Third Due Date</label>
+                <input type="date" id="name" class="form-control" formControlName="thirdDueDate" required>
+                <div *ngIf="actionForm.get('thirdDueDate')!.invalid && (actionForm.get('thirdDueDate')?.dirty || actionForm.get('thirdDueDate')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('thirdDueDate')!.errors?.required">
+                        ThirdDueDate is required.
+                    </div>
+                    <div *ngIf="actionForm.get('thirdDueDate')!.errors?.minlength">
+                        ThirdDueDate must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- ActionDEscription -->
+                <label>Action Description</label>
+                <textarea cols="40" rows="5" id="name" class="form-control" formControlName="actionDescription"
+                    required></textarea>
+                <div *ngIf="actionForm.get('actionDescription')!.invalid && (actionForm.get('actionDescription')?.dirty || actionForm.get('actionDescription')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('actionDescription')!.errors?.required">
+                        ActionDescription is required.
+                    </div>
+                    <div *ngIf="actionForm.get('actionDescription')!.errors?.minlength">
+                        ActionDescription must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <button matStepperNext class="next" type="submit">Next <i class="fa fa-arrow-right"
+                        aria-hidden="true"></i></button>
+                <button matStepperPrevious class="back" type="submit"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i> Back </button>
+
+
+            </mat-step>
+
+            <mat-step>
+                <!-- DefectDescription -->
+                <label>Defect Description</label>
+                <textarea cols="40" rows="5" id="name" class="form-control" formControlName="defectDescription"
+                    required></textarea>
+                <div *ngIf="actionForm.get('defectDescription')!.invalid && (actionForm.get('defectDescription')?.dirty || actionForm.get('defectDescription')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('defectDescription')!.errors?.required">
+                        DefectDescription is required.
+                    </div>
+                    <div *ngIf="actionForm.get('defectDescription')!.errors?.minlength">
+                        DefectDescription must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Status -->
+                <label>Status</label>
+                <input type="text" id="name" class="form-control" formControlName="status" placeholder="status"
+                    required>
+                <div *ngIf="actionForm.get('status')!.invalid && (actionForm.get('status')?.dirty || actionForm.get('status')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('status')!.errors?.required">
+                        Status is required.
+                    </div>
+                    <div *ngIf="actionForm.get('status')!.errors?.minlength">
+                        Status must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Progress -->
+                <label>Progress</label>
+                <input type="text" id="name" class="form-control" formControlName="progress" placeholder="progress"
+                    required>
+                <div *ngIf="actionForm.get('progress')!.invalid && (actionForm.get('progress')?.dirty || actionForm.get('progress')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('progress')!.errors?.required">
+                        Progress is required.
+                    </div>
+                    <div *ngIf="actionForm.get('progress')!.errors?.minlength">
+                        Progress must be at least 4 characters long.
+                    </div>
+                </div>
+
+                <br>
+                <button matStepperNext class="next" type="submit">Next <i class="fa fa-arrow-right"
+                        aria-hidden="true"></i></button>
+                <button matStepperPrevious class="back" type="submit"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i> Back </button>
+            </mat-step>
+
+            <mat-step>
+
+                <!-- RootCause -->
+                <label>RootCause</label>
+                <textarea cols="40" rows="5" id="name" class="form-control" formControlName="rootCause"
+                    required></textarea>
+                <div *ngIf="actionForm.get('rootCause')!.invalid && (actionForm.get('rootCause')?.dirty || actionForm.get('rootCause')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('rootCause')!.errors?.required">
+                        RootCause is required.
+                    </div>
+                    <div *ngIf="actionForm.get('rootCause')!.errors?.minlength">
+                        RootCause must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+                <!-- Kpi -->
+                <label>Kpi</label>
+                <input type="text" id="name" class="form-control" formControlName="kpi" placeholder="Kpi" required>
+                <div *ngIf="actionForm.get('kpi')!.invalid && (actionForm.get('kpi')?.dirty || actionForm.get('kpi')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('kpi')!.errors?.required">
+                        Kpi is required.
+                    </div>
+                    <div *ngIf="actionForm.get('kpi')!.errors?.minlength">
+                        Kpi must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Finding -->
+                <label>Finding</label>
+                <input type="text" id="name" class="form-control" formControlName="finding" placeholder="finding"
+                    required>
+                <div *ngIf="actionForm.get('finding')!.invalid && (actionForm.get('finding')?.dirty || actionForm.get('finding')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('finding')!.errors?.required">
+                        Finding is required.
+                    </div>
+                    <div *ngIf="actionForm.get('finding')!.errors?.minlength">
+                        Finding must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <button matStepperNext class="next" type="submit">Next <i class="fa fa-arrow-right"
+                        aria-hidden="true"></i></button>
+                <button matStepperPrevious class="back" type="submit"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i> Back </button>
+            </mat-step>
+
+            <mat-step>
+
+                <!-- Manalysis -->
+                <label>5M analysis</label>
+                <input type="text" id="name" class="form-control" formControlName="manalysis" required>
+                <div *ngIf="actionForm.get('manalysis')!.invalid && (actionForm.get('manalysis')?.dirty || actionForm.get('manalysis')!.touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="actionForm.get('manalysis')!.errors?.required">
+                        Manalysis is required.
+                    </div>
+                    <div *ngIf="actionForm.get('manalysis')!.errors?.minlength">
+                        Manalysis must be at least 4 characters long.
+                    </div>
+                </div>
+                <br>
+
+                <!-- Weekly findings-->
+                <label>Weekly Findings </label>
+
+                <select name="weeks" id="weeks" [(ngModel)]="week" [ngModelOptions]="{standalone: true}">
+                    <option value="Wk0">Wk0</option>
+                    <option value="Wk1">Wk1</option>
+                    <option value="Wk2">Wk2</option>
+                    <option value="Wk3">Wk3</option>
+                    <option value="Wk4">Wk4</option>
+                    <option value="Wk5">Wk5</option>
+                    <option value="Wk6">Wk6</option>
+                    <option value="Wk7">Wk7</option>
+                    <option value="Wk8">Wk8</option>
+                    <option value="Wk9">Wk9</option>
+                    <option value="Wk10">Wk10</option>
+                    <option value="Wk11">Wk11</option>
+                    <option value="Wk12">Wk12</option>
+                    <option value="Wk13">Wk13</option>
+                    <option value="Wk14">Wk14</option>
+                    <option value="Wk15">Wk15</option>
+                    <option value="Wk16">Wk16</option>
+                    <option value="Wk17">Wk17</option>
+                    <option value="Wk18">MWk18</option>
+                    <option value="Wk19">Wk19</option>
+                    <option value="Wk20">Wk20</option>
+                    <option value="Wk21">Wk21</option>
+                    <option value="Wk22">Wk22</option>
+                    <option value="Wk23">Wk23</option>
+                    <option value="Wk24">Wk24</option>
+                    <option value="Wk25">Wk25</option>
+                </select>
+                <br>
+                <br>
+                <div [ngSwitch]="week">
+                    <textarea *ngSwitchCase="'Wk0'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk0" required></textarea>
+                    <textarea *ngSwitchCase="'Wk1'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk1" required></textarea>
+                    <textarea *ngSwitchCase="'Wk2'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk2" required></textarea>
+                    <textarea *ngSwitchCase="'Wk3'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk3" required></textarea>
+                    <textarea *ngSwitchCase="'Wk4'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk4" required></textarea>
+                    <textarea *ngSwitchCase="'Wk5'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk5" required></textarea>
+                    <textarea *ngSwitchCase="'Wk6'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk6" required></textarea>
+                    <textarea *ngSwitchCase="'Wk7'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk7" required></textarea>
+                    <textarea *ngSwitchCase="'Wk8'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk8" required></textarea>
+                    <textarea *ngSwitchCase="'Wk9'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk9" required></textarea>
+                    <textarea *ngSwitchCase="'Wk10'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk10" required></textarea>
+                    <textarea *ngSwitchCase="'Wk11'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk11" required></textarea>
+                    <textarea *ngSwitchCase="'Wk12'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk12" required></textarea>
+                    <textarea *ngSwitchCase="'Wk13'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk13" required></textarea>
+                    <textarea *ngSwitchCase="'Wk14'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk14" required></textarea>
+                    <textarea *ngSwitchCase="'Wk15'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk15" required></textarea>
+                    <textarea *ngSwitchCase="'Wk16'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk16" required></textarea>
+                    <textarea *ngSwitchCase="'Wk17'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk17" required></textarea>
+                    <textarea *ngSwitchCase="'Wk18'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk18" required></textarea>
+                    <textarea *ngSwitchCase="'Wk19'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk19" required></textarea>
+                    <textarea *ngSwitchCase="'Wk20'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk20" required></textarea>
+                    <textarea *ngSwitchCase="'Wk21'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk21" required></textarea>
+                    <textarea *ngSwitchCase="'Wk22'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk22" required></textarea>
+                    <textarea *ngSwitchCase="'Wk23'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk23" required></textarea>
+                    <textarea *ngSwitchCase="'Wk24'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk24" required></textarea>
+                    <textarea *ngSwitchCase="'Wk25'" cols="40" rows="5" id="name" class="form-control"
+                        formControlName="Wk25" required></textarea>
+                </div>
+
+                <br>
+                <button mat-button mat-dialog-close class="next" type="submit" (click)="catchUser()">Create </button>
+                <button matStepperPrevious class="back" type="submit"><i class="fa fa-arrow-left"
+                        aria-hidden="true"></i> Back </button>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </form>
+
+
+</mat-dialog-content>

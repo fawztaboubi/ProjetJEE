@@ -1,0 +1,138 @@
+<!--<highcharts-chart class="first" [Highcharts]="highcharts" [options]="chartOptions">
+</highcharts-chart>!-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h2 class="title">Global Monitoring <i class="fa fa-line-chart" aria-hidden="true"></i></h2>
+
+<header class="navbar">
+
+   <div class="card">
+
+      <div class="card-body sucess">
+         <mat-card class="small-card">
+
+            <mat-card-content class="inside" style="font-weight: bold; text-align: center;">
+               {{done}}% done <i class="fa fa-check-circle" aria-hidden="true" style="color: #52BB52;"></i>
+            </mat-card-content>
+
+         </mat-card>
+      </div>
+   </div>
+
+   <div class="card">
+
+      <div class="card-body warning">
+         <mat-card class="small-card">
+
+            <mat-card-content class="inside" style="font-weight: bold; text-align: center;">
+               {{doing}}% on going <i class="fa fa-play-circle" aria-hidden="true" style="color:#E9E16E;"></i>
+            </mat-card-content>
+
+         </mat-card>
+      </div>
+   </div>
+
+   <div class="card">
+
+      <div class="card-body danger">
+         <mat-card class="small-card">
+
+            <mat-card-content class="inside" style="font-weight: bold; text-align: center;">
+               {{delayed}}% delayed <i class="fa fa-exclamation-circle" aria-hidden="true" style="color:#CC3712;"></i>
+            </mat-card-content>
+
+         </mat-card>
+      </div>
+
+   </div>
+</header>
+<table>
+
+   <tr>
+
+      <td>
+
+         <mat-card class="example-card">
+            <mat-card-content>
+               <mat-card-title>First Chart</mat-card-title>
+               <highcharts-chart class="first" id="depchart">
+               </highcharts-chart>
+            </mat-card-content>
+
+         </mat-card>
+      </td>
+     
+      <td>
+         <mat-card class="example-card">
+            <mat-card-content>
+               <mat-card-title>Second Chart</mat-card-title>
+               <highcharts-chart class="first" id="themechart">
+               </highcharts-chart>
+            </mat-card-content>
+
+         </mat-card>
+      </td>
+
+   </tr>
+   <tr>
+      <br>
+   </tr>
+
+   <tr>
+
+      <td>
+
+         <mat-card class="example-card">
+            <mat-card-content>
+               <mat-card-title>Third Chart</mat-card-title>
+               <highcharts-chart class="first" id="delaychart">
+               </highcharts-chart>
+            </mat-card-content>
+
+         </mat-card>
+      </td>
+
+      <td>
+         <mat-card class="example-card">
+            <mat-card-content>
+               <mat-card-title>Fourth Chart</mat-card-title>
+               <highcharts-chart class="first" id="delaydepchart">
+               </highcharts-chart>
+            </mat-card-content>
+
+         </mat-card>
+      </td>
+
+   </tr>
+</table>
+<div> <br>
+   <h2 class="title">Detailed Monitoring <i class="fa fa-line-chart" aria-hidden="true"></i></h2>
+   <br>
+   
+</div>
+
+<table>
+   <tr>
+      <td>
+         <mat-card class="example-card">
+            <mat-card-content>
+               <mat-card-title>Fourth Chart</mat-card-title>
+               <highcharts-chart class="first" id="ownerdepchart">
+               </highcharts-chart>
+            </mat-card-content>
+
+         </mat-card>
+      </td>
+
+      <td>
+         <mat-card class="example-card">
+            <mat-card-content>
+               <mat-card-title>Fourth Chart</mat-card-title>
+               <highcharts-chart class="first" id="linedepchart">
+               </highcharts-chart>
+            </mat-card-content>
+
+         </mat-card>
+      </td>
+   </tr>
+</table>

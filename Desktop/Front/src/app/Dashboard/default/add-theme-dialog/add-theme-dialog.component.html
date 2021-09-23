@@ -1,0 +1,23 @@
+<h2 mat-dialog-title class="title">Add Theme</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form [formGroup]="themeForm">
+
+        <input type="text" id="name" class="form-control" formControlName="name" required>
+        <div *ngIf="themeForm.get('name')!.invalid && (themeForm.get('name')!.dirty || themeForm.get('name')!.touched)" class="alert alert-danger">
+
+            <div *ngIf="themeForm.get('name')!.errors?.required">
+                Name is required.
+            </div>
+            <div *ngIf="themeForm.get('name')!.errors?.minlength">
+                Name must be at least 4 characters long.
+            </div>
+
+        </div>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close (click)="saveTheme()" type="submit">Create Theme </button>
+
+</mat-dialog-actions>
