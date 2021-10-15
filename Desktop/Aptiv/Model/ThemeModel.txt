@@ -1,7 +1,0 @@
-package com.EnicarthageClubs.model;
-
-public class Theme {
-
-//a theme belongs to one and only one action plan
-
-}
