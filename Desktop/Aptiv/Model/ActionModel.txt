@@ -1,0 +1,95 @@
+package com.EnicarthageClubs.model;
+
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="membre")
+
+//still have to define inheritence relationship between action and action_plan and also action and user
+//user is refrred to as owner
+
+public class Action {
+	@javax.persistence.Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Id", nullable=false, unique=true, length=11)
+	public int Id;
+	
+	@Column(name="ActionName",nullable=false, unique=false, length=20)
+	public String ActionName;
+
+	
+	@Column(name="Status", nullable=false, length=20)
+	public String Status;
+	
+	@Column(name="Owner", nullable=false, length=20)
+	public int Owner;
+	
+	@Column(name="StartDate", nullable=false, length=25)
+	public String StartDate;
+	
+	@Column(name="DueDate", nullable=false, length=25)
+	public String DueDate;
+	
+
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	public int getOwner() {
+		return Owner;
+	}
+
+	public void setOwner(int owner) {
+		Owner = owner;
+	}
+
+	public String getStartDate() {
+		return StartDate;
+	}
+
+	public void setStartDate(String startDate) {
+		StartDate = startDate;
+	}
+
+	public String getDueDate() {
+		return DueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		DueDate = dueDate;
+	}
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public String getActionName() {
+		return ActionName;
+	}
+
+
+
+	public void setActionName(String actionName) {
+		ActionName = actionName;
+	}
+
+
+
+
+}

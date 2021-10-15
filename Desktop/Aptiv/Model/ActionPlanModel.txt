@@ -1,0 +1,32 @@
+package com.EnicarthageClubs.model;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ActionPlan")
+public class ActionPlan {
+	
+	//an action plan is defined by an id, departments involved,and themes(VOC,VOP..)
+	//still have to define the relationship manytoOne or OneToMany between and action plan and department
+	
+	@javax.persistence.Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
+	@Column(name="Id", nullable=false, unique=true, length=11)
+	public int Id;
+	
+	
+	
+	private List<Themes> theme;
+
+
+	
+}

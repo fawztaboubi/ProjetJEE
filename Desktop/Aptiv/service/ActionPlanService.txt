@@ -1,0 +1,48 @@
+package com.EnicarthageClubs.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+@Service
+public class actionPlanService {
+
+	//an actionPlan belongs to one theme
+	@Autowired
+	actionPlanRepo actionPlanRepository;
+    
+	@Transactional
+	public List<ActionPlan> getAllActionPlans() {
+		return actionPlanRepository.findAll();
+	}
+
+	//@Transactional
+	//public List<Club> findByName(String name) {
+		//return clubRepository.findByName(name);
+	//}
+
+	@Transactional
+	public Optional<ActionPlan> getById(Long id) {
+		return actionPlanRepository.findById(id);
+	}
+
+	@Transactional
+	public void deleteActionPlan(Long ActionPlanId) {
+		actionPlanRepository.deleteById(ActionPlanId);
+	}
+
+	//deleting action plan should thorw and action to deleting all the actions involved
+	@Transactional
+	public boolean addActionPlan(ActionPlan actionPlan) {
+		return ActionPlanRepository.save(actionPlan) != null;
+	}
+
+	@Transactional
+	public boolean updateActionPlan(ActionPlan actionPlan) {
+		return actionPlanRepository.save(actionPlan) != null;
+	}
+}

@@ -1,0 +1,8 @@
+package com.EnicarthageClubs.model;
+
+public class Team {
+	//here define coordinator and list of users
+	//check logic realtionship in LMD how to define dependency many to one
+	//many users to one team and one team has many users
+
+}

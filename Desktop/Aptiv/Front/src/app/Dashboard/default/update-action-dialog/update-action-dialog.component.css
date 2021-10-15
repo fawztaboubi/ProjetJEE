@@ -1,0 +1,91 @@
+.form-container{
+    background-color: #fff;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 0;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.3);
+}
+.title{
+    color: #000;
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 25px;
+}
+.title:after{
+    content: '';
+    background-color:#f84018;
+    height: 3px;
+    width: 60px;
+    margin: 10px 0 0;
+    display: block;
+    clear: both;
+}
+.sub-title{
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+}
+button{
+    font-size:18px;
+    color:#fff;
+    width: 100px;
+    background:#000000;
+    border:none;
+    padding: 14px 15px;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-radius:5px;
+}
+ button:hover{
+    background-color: #f84018;
+    cursor: pointer;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+    display: none !important;
+    
+  }
+
+.next{
+    position:relative;
+    left: 505px;
+}  
+
+.back{
+    position: relative;
+    right: 100px;
+}
+footer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+.ask{
+    position: relative;
+    right: 320px;
+    top: 15px;
+}
+
+.tick{
+    position: relative;
+    left: 10px;
+}  
+
+p{
+    color: #f84018;
+}
+/* Split the screen in half */
+
+*{  font-family:'Montserrat',sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}

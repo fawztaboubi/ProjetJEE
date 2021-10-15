@@ -1,0 +1,20 @@
+package com.EnicarthageClubs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+//we can add a request to the database and it should be neither deleted nor updated
+
+@Service
+public class requestService {
+	
+	@Autowired
+	requestRepo requestRepository;
+
+	@Transactional
+	public boolean addRequest(Request request) {
+		return requestRepository.save(request) != null;
+	}
+}

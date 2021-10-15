@@ -1,0 +1,52 @@
+package com.EnicarthageClubs.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+
+public class reponseContoller {
+
+	@Autowired
+	responseService ResponseService;
+
+	@RequestMapping(value = "/response/{id}", method = ResponseMethod.GET)
+	public @ResponseBody Optional<Response> getAllResponses(@PathVariable Long id) {
+		return ResponseService.getById(id);
+	}
+
+	//@RequestMapping(value = "/membreByName/{name}", method = RequestMethod.GET)
+	//public List<Membre> getMembreByName(@PathVariable String name) {
+		//return MembreService.findByName(name);
+	//}
+
+	@RequestMapping(value = "/response", method = ResponseMethod.GET)
+	public List<Response> getAll() {
+		return ResponseService.getAllResponses();
+	}
+
+	@RequestMapping(value = "/response/{id}", method = ResponseMethod.DELETE)
+	public HttpStatus deleteResponse(@PathVariable Long id) {
+		ResponseService.deleteResponse(id);
+		return HttpStatus.NO_CONTENT;
+	}
+
+	@RequestMapping(value = "/response", method = ResponseMethod.POST)
+	public HttpStatus insertResponse(@RequestBody Response response) {
+		return ResponseService.addResponse(response) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	}
+
+	@RequestMapping(value = "/response", method = ResponseMethod.PUT)
+	public HttpStatus updateResponse(@RequestBody Response response) {
+		return ResponseService.updateResponse(response) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
+	}
+}

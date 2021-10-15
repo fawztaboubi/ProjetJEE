@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Add Action Plan</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form [formGroup]="actionplanForm">
+
+        <input type="text" id="name" class="form-control" formControlName="name" required>
+        <div *ngIf="actionplanForm.get('name')!.invalid && (actionplanForm.get('name')!.dirty || actionplanForm.get('name')!.touched)"class="alert alert-danger">
+
+            <div *ngIf="actionplanForm.get('name')!.errors?.required">
+                Name is required.
+            </div>
+            <div *ngIf="actionplanForm.get('name')!.errors?.minlength">
+                Name must be at least 4 characters long.
+            </div>
+        </div>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close (click)="saveActionplan()" type="submit">Create </button>
+</mat-dialog-actions>

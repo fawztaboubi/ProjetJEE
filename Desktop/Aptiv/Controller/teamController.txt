@@ -1,0 +1,53 @@
+package com.EnicarthageClubs.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class teamController {
+	
+	@Autowired
+	teamService TeamService;
+
+	@RequestMapping(value = "/team/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Team> getAllTeams(@PathVariable Long id) {
+		return TeamService.getById(id);
+	}
+
+	//@RequestMapping(value = "/membreByName/{name}", method = RequestMethod.GET)
+	//public List<Membre> getMembreByName(@PathVariable String name) {
+		//return MembreService.findByName(name);
+	//}
+
+	@RequestMapping(value = "/team", method = RequestMethod.GET)
+	public List<Team> getAll() {
+		return TeamService.getAllTeams();
+	}
+
+	@RequestMapping(value = "/team/{id}", method = RequestMethod.DELETE)
+	public HttpStatus deleteTeam(@PathVariable Long id) {
+		TeamService.deleteTeam(id);
+		return HttpStatus.NO_CONTENT;
+	}
+
+	@RequestMapping(value = "/team", method = RequestMethod.POST)
+	public HttpStatus insertTeam(@RequestBody Team team) {
+		return TeamService.addTeam(team) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	}
+
+	@RequestMapping(value = "/team", method = RequestMethod.PUT)
+	public HttpStatus updateMembre(@RequestBody Team team) {
+		return TeamService.updateTeam(team) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
+	}
+
+}

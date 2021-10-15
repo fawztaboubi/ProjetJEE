@@ -1,0 +1,55 @@
+package com.EnicarthageClubs.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+
+
+@RestController
+public class themeController {
+	
+	@Autowired
+	themeService ThemeService;
+
+	@RequestMapping(value = "/theme/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Theme> getAllThemes(@PathVariable Long id) {
+		return ThemeService.getById(id);
+	}
+
+	//@RequestMapping(value = "/membreByName/{name}", method = RequestMethod.GET)
+	//public List<Membre> getMembreByName(@PathVariable String name) {
+		//return MembreService.findByName(name);
+	//}
+
+	@RequestMapping(value = "/theme", method = RequestMethod.GET)
+	public List<Theme> getAll() {
+		return ThemeService.getAllThemes();
+	}
+
+	@RequestMapping(value = "/theme/{id}", method = RequestMethod.DELETE)
+	public HttpStatus deleteTheme(@PathVariable Long id) {
+		ThemeService.deleteTheme(id);
+		return HttpStatus.NO_CONTENT;
+	}
+
+	@RequestMapping(value = "/theme", method = RequestMethod.POST)
+	public HttpStatus insertTHeme(@RequestBody Theme theme) {
+		return ThemeService.addTheme(theme) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	}
+
+	@RequestMapping(value = "/theme", method = RequestMethod.PUT)
+	public HttpStatus updateTheme(@RequestBody Theme theme) {
+		return ThemeService.updateTheme(theme) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
+	}
+
+
+}
